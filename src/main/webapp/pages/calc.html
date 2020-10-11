@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculation</title>
+</head>
+<body>
+<form th:action="@{/home/calc}" th:object="${operation}" method="post">
+    <input type="number" th:field="*{num1}">
+    <p th:if="${#fields.hasErrors('num1')}" th:errors="*{num1}"></p>
+    <input type="number" th:field="*{num2}">
+    <p th:if="${#fields.hasErrors('num2')}" th:errors="*{num2}"></p>
+    <select th:field="*{type}">
+        <option value="" selected disabled>Choose operation</option>
+        <option value="sum">+</option>
+        <option value="sub">-</option>
+        <option value="mult">*</option>
+        <option value="div">/</option>
+    </select>
+    <p th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></p>
+    <button>Calc</button>
+</form>
+<p th:text="${result}"></p>
+<br>
+<a href="/home/account">See operations history</a>
+</body>
+</html>

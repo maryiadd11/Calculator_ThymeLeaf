@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Account</title>
+</head>
+<body>
+<p th:action="@{/home/account}"></p>
+
+<span th:if="${operationsList != null}">
+    <tr th:each="operation: ${operationsList}">
+        <td th:text="${operation.num1}"></td>
+        <td th:text="${operation.num2}"></td>
+        <td th:text="${operation.type}"></td>
+        <td th:text="${operation.result}"></td>
+    </tr>
+</span>
+
+<span th:if="${operationsList == null}">
+    <p th:text="${message}"></p>
+</span>
+<br>
+<a th:href="@{/home/calc}">Open calculator</a>
+</body>
+</html>
