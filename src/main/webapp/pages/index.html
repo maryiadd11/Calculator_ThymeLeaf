@@ -7,10 +7,15 @@
 <body>
 <p th:action="@{/home/index}"></p>
 
-<a th:href="@{/home/reg}">Registration</a>
-<a th:href="@{/home/auth}">Authorization</a>
-<a th:href="@{/home/calc}">Calculator</a>
-<a th:href="@{/home/account}">User Account</a>
+<p th:if="${session.authorized == null}">
+    <a th:href="@{/home/reg}">Registration</a>
+    <a th:href="@{/home/auth}">Authorization</a>
+</p>
+
+<p th:if="${session.authorized != null}">
+    <a th:href="@{/home/calc}">Calculator</a>
+    <a th:href="@{/home/account}">User Account</a>
+</p>
 
 </body>
 </html>
